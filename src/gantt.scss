@@ -1,6 +1,7 @@
 $bar-color: #b8c2cc !default;
 $bar-stroke: #8D99A6 !default;
 $border-color: #e0e0e0 !default;
+$border-color-deep: #999 !default;
 $light-bg: #f5f5f5 !default;
 $light-border-color: #ebeff2 !default;
 $light-yellow: #fcf8e3 !default;
@@ -10,14 +11,20 @@ $text-color: #333 !default;
 $blue: #a3a3ff !default;
 $handle-color: #ddd !default;
 
+$success-color: #52c41a !default;
+$danger-color: #ff4d4f !default;
+$warning-color: #faad14 !default;
+
+
+
 .gantt {
 	.grid-background {
 		fill: none;
 	}
 	.grid-header {
-		fill: #ffffff;
+		fill: #fafafa;
 		stroke: $border-color;
-		stroke-width: 1.4;
+		stroke-width: 0.2;
 	}
 	.grid-row {
 		fill: #ffffff;
@@ -32,6 +39,7 @@ $handle-color: #ddd !default;
 		stroke: $border-color;
 		stroke-width: 0.2;
 		&.thick {
+			stroke: $border-color-deep!important;
 			stroke-width: 0.4;
 		}
 	}
@@ -55,6 +63,15 @@ $handle-color: #ddd !default;
 	}
 	.bar-progress {
 		fill: $blue;
+		&.success{
+			fill: $success-color;
+		}
+		&.warning{
+			fill: $warning-color;
+		}
+		&.danger{
+			fill: $danger-color;
+		}
 	}
 	.bar-invalid {
 		fill: transparent;
@@ -117,9 +134,14 @@ $handle-color: #ddd !default;
 		}
 	}
 
-	.lower-text, .upper-text {
+	.lower-text{
 		font-size: 12px;
 		text-anchor: middle;
+	}
+	.upper-text {
+		font-size: 13px;
+		text-anchor: middle;
+		font-weight: bold;
 	}
 	.upper-text {
 		fill: $text-light;
@@ -146,6 +168,7 @@ $handle-color: #ddd !default;
 		padding: 0;
 		color: #959da5;
 		border-radius: 3px;
+		min-width: 180px;
 
 		.title {
 			border-bottom: 3px solid $blue;

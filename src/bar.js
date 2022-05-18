@@ -32,36 +32,36 @@ export default class Bar {
         this.width = this.gantt.options.column_width * this.duration;
         this.progress_width =
             this.gantt.options.column_width *
-                this.duration *
-                (this.task.progress / 100) || 0;
+            this.duration *
+            (this.task.progress / 100) || 0;
         this.group = createSVG('g', {
             class: 'bar-wrapper ' + (this.task.custom_class || ''),
-            'data-id': this.task.id,
+            'data-id': this.task.id
         });
         this.bar_group = createSVG('g', {
             class: 'bar-group',
-            append_to: this.group,
+            append_to: this.group
         });
         this.handle_group = createSVG('g', {
             class: 'handle-group',
-            append_to: this.group,
+            append_to: this.group
         });
     }
 
     prepare_helpers() {
-        SVGElement.prototype.getX = function () {
+        SVGElement.prototype.getX = function() {
             return +this.getAttribute('x');
         };
-        SVGElement.prototype.getY = function () {
+        SVGElement.prototype.getY = function() {
             return +this.getAttribute('y');
         };
-        SVGElement.prototype.getWidth = function () {
+        SVGElement.prototype.getWidth = function() {
             return +this.getAttribute('width');
         };
-        SVGElement.prototype.getHeight = function () {
+        SVGElement.prototype.getHeight = function() {
             return +this.getAttribute('height');
         };
-        SVGElement.prototype.getEndX = function () {
+        SVGElement.prototype.getEndX = function() {
             return this.getX() + this.getWidth();
         };
     }
@@ -82,7 +82,7 @@ export default class Bar {
             rx: this.corner_radius,
             ry: this.corner_radius,
             class: 'bar',
-            append_to: this.bar_group,
+            append_to: this.bar_group
         });
 
         animateSVG(this.$bar, 'width', 0, this.width);
@@ -101,10 +101,9 @@ export default class Bar {
             height: this.height,
             rx: this.corner_radius,
             ry: this.corner_radius,
-            class: 'bar-progress',
-            append_to: this.bar_group,
+            class: `bar-progress ${this.task.type || ''}`,
+            append_to: this.bar_group
         });
-
         animateSVG(this.$bar_progress, 'width', 0, this.progress_width);
     }
 
@@ -114,7 +113,7 @@ export default class Bar {
             y: this.y + this.height / 2,
             innerHTML: this.task.name,
             class: 'bar-label',
-            append_to: this.bar_group,
+            append_to: this.bar_group
         });
         // labels get BBox in the next tick
         requestAnimationFrame(() => this.update_label_position());
@@ -134,7 +133,7 @@ export default class Bar {
             rx: this.corner_radius,
             ry: this.corner_radius,
             class: 'handle right',
-            append_to: this.handle_group,
+            append_to: this.handle_group
         });
 
         createSVG('rect', {
@@ -145,14 +144,14 @@ export default class Bar {
             rx: this.corner_radius,
             ry: this.corner_radius,
             class: 'handle left',
-            append_to: this.handle_group,
+            append_to: this.handle_group
         });
 
         if (this.task.progress && this.task.progress < 100) {
             this.$handle_progress = createSVG('polygon', {
                 points: this.get_progress_polygon_points().join(','),
                 class: 'handle progress',
-                append_to: this.handle_group,
+                append_to: this.handle_group
             });
         }
     }
@@ -165,7 +164,7 @@ export default class Bar {
             bar_progress.getEndX() + 5,
             bar_progress.getY() + bar_progress.getHeight(),
             bar_progress.getEndX(),
-            bar_progress.getY() + bar_progress.getHeight() - 8.66,
+            bar_progress.getY() + bar_progress.getHeight() - 8.66
         ];
     }
 
@@ -215,7 +214,7 @@ export default class Bar {
             target_element: this.$bar,
             title: this.task.name,
             subtitle: subtitle,
-            task: this.task,
+            task: this.task
         });
     }
 
@@ -264,7 +263,7 @@ export default class Bar {
         this.gantt.trigger_event('date_change', [
             this.task,
             new_start_date,
-            date_utils.add(new_end_date, -1, 'second'),
+            date_utils.add(new_end_date, -1, 'second')
         ]);
     }
 
@@ -398,7 +397,7 @@ export default class Bar {
             .setAttribute('x', bar.getEndX() - 9);
         const handle = this.group.querySelector('.handle.progress');
         handle &&
-            handle.setAttribute('points', this.get_progress_polygon_points());
+        handle.setAttribute('points', this.get_progress_polygon_points());
     }
 
     update_arrow_position() {
