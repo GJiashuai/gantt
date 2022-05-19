@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1a19558-e108-45ce-befe-92d304443c4f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/date_utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/date_utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gantt.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/gantt.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +31,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -44,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652926374960</updated>
       <workItem from="1652926376090" duration="2000" />
-      <workItem from="1652930308281" duration="956000" />
+      <workItem from="1652930308281" duration="9698000" />
     </task>
     <servers />
   </component>
@@ -52,9 +56,33 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="979" y="475" width="602" height="490" key="find.popup" timestamp="1652931107273">
+    <state x="979" y="475" width="602" height="490" key="find.popup" timestamp="1652959242053">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state x="979" y="475" width="602" height="490" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1652931107273" />
+    <state x="979" y="475" width="602" height="490" key="find.popup/0.0.2560.1440@0.0.2560.1440" timestamp="1652959242053" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/index.js</url>
+          <line>97</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/index.js</url>
+          <line>593</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/index.js</url>
+          <line>643</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

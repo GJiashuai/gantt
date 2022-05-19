@@ -88,8 +88,6 @@ $warning-color: #faad14 !default;
 		dominant-baseline: central;
 		text-anchor: middle;
 		font-size: 12px;
-		font-weight: lighter;
-
 		&.big {
 			fill: $text-light;
 			text-anchor: start;
@@ -169,21 +167,22 @@ $warning-color: #faad14 !default;
 		color: #959da5;
 		border-radius: 3px;
 		min-width: 180px;
-
+		max-width: 300px;
 		.title {
 			border-bottom: 3px solid $blue;
 			padding: 10px;
+			color: #dfe2e5;
 		}
 
 		.subtitle {
-			padding: 10px;
+			padding: 5px 10px;
 			color: #dfe2e5;
 		}
 
 		.pointer {
 			position: absolute;
 			height: 5px;
-			margin: 0 0 0 -5px;
+			margin: 0 0 0 -3px;
 			border: 5px solid transparent;
 			border-top-color: rgba(0, 0, 0, 0.8);
 		}

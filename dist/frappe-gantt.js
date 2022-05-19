@@ -532,11 +532,13 @@ var Gantt = (function () {
             this.draw_bar();
             this.draw_progress_bar();
             this.draw_label();
-            this.draw_resize_handles();
+            if (this.gantt.options.disableDrag) {
+                this.draw_resize_handles();
+            }
         }
 
         draw_bar() {
-            this.$bar = createSVG('rect', {
+            const barOptions = {
                 x: this.x,
                 y: this.y,
                 width: this.width,
@@ -545,7 +547,16 @@ var Gantt = (function () {
                 ry: this.corner_radius,
                 class: 'bar',
                 append_to: this.bar_group
-            });
+            };
+            this.$bar = createSVG(
+                'rect',
+                Object.assign(
+                    this.task.bgColor
+                        ? { style: `fill:${this.task.bgColor};` }
+                        : {},
+                    barOptions
+                )
+            );
 
             animateSVG(this.$bar, 'width', 0, this.width);
 
@@ -556,7 +567,8 @@ var Gantt = (function () {
 
         draw_progress_bar() {
             if (this.invalid) return;
-            this.$bar_progress = createSVG('rect', {
+
+            const progressOptions = {
                 x: this.x,
                 y: this.y,
                 width: this.progress_width,
@@ -565,7 +577,14 @@ var Gantt = (function () {
                 ry: this.corner_radius,
                 class: `bar-progress ${this.task.type || ''}`,
                 append_to: this.bar_group
-            });
+            };
+            this.$bar_progress = createSVG(
+                'rect',
+                Object.assign(
+                    this.task.color ? { style: `fill:${this.task.color};` } : {},
+                    progressOptions
+                )
+            );
             animateSVG(this.$bar_progress, 'width', 0, this.progress_width);
         }
 
@@ -586,7 +605,6 @@ var Gantt = (function () {
 
             const bar = this.$bar;
             const handle_width = 8;
-
             createSVG('rect', {
                 x: bar.getX() + bar.getWidth() - 9,
                 y: bar.getY() + 1,
@@ -1260,6 +1278,9 @@ var Gantt = (function () {
             if (this.view_is([VIEW_MODE.QUARTER_DAY, VIEW_MODE.HALF_DAY, VIEW_MODE.DAY])) {
                 this.gantt_start = date_utils.add(this.gantt_start, -7, 'day');
                 this.gantt_end = date_utils.add(this.gantt_end, 7, 'day');
+            } else if (this.view_is([VIEW_MODE.DAY])) {
+                this.gantt_start = date_utils.add(this.gantt_start, -15, 'day');
+                this.gantt_end = date_utils.add(this.gantt_end, 15, 'day');
             } else if (this.view_is(VIEW_MODE.MONTH)) {
                 this.gantt_start = date_utils.start_of(this.gantt_start, 'year');
                 this.gantt_end = date_utils.add(this.gantt_end, 1, 'year');

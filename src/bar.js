@@ -70,11 +70,13 @@ export default class Bar {
         this.draw_bar();
         this.draw_progress_bar();
         this.draw_label();
-        this.draw_resize_handles();
+        if (this.gantt.options.disableDrag) {
+            this.draw_resize_handles();
+        }
     }
 
     draw_bar() {
-        this.$bar = createSVG('rect', {
+        const barOptions = {
             x: this.x,
             y: this.y,
             width: this.width,
@@ -83,7 +85,16 @@ export default class Bar {
             ry: this.corner_radius,
             class: 'bar',
             append_to: this.bar_group
-        });
+        };
+        this.$bar = createSVG(
+            'rect',
+            Object.assign(
+                this.task.bgColor
+                    ? { style: `fill:${this.task.bgColor};` }
+                    : {},
+                barOptions
+            )
+        );
 
         animateSVG(this.$bar, 'width', 0, this.width);
 
@@ -94,7 +105,8 @@ export default class Bar {
 
     draw_progress_bar() {
         if (this.invalid) return;
-        this.$bar_progress = createSVG('rect', {
+
+        const progressOptions = {
             x: this.x,
             y: this.y,
             width: this.progress_width,
@@ -103,7 +115,14 @@ export default class Bar {
             ry: this.corner_radius,
             class: `bar-progress ${this.task.type || ''}`,
             append_to: this.bar_group
-        });
+        };
+        this.$bar_progress = createSVG(
+            'rect',
+            Object.assign(
+                this.task.color ? { style: `fill:${this.task.color};` } : {},
+                progressOptions
+            )
+        );
         animateSVG(this.$bar_progress, 'width', 0, this.progress_width);
     }
 
@@ -124,7 +143,6 @@ export default class Bar {
 
         const bar = this.$bar;
         const handle_width = 8;
-
         createSVG('rect', {
             x: bar.getX() + bar.getWidth() - 9,
             y: bar.getY() + 1,
