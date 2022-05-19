@@ -260,7 +260,9 @@ export default {
             const max_score = scores[scale];
             return scores[_scale] <= max_score;
         }
-
+        if(!date){
+            date = new Date();
+        }
         const vals = [
             date.getFullYear(),
             should_reset(YEAR) ? 0 : date.getMonth(),

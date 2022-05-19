@@ -2,9 +2,9 @@
   fill: none;
 }
 .gantt .grid-header {
-  fill: #ffffff;
+  fill: #fafafa;
   stroke: #e0e0e0;
-  stroke-width: 1.4;
+  stroke-width: 0.2;
 }
 .gantt .grid-row {
   fill: #ffffff;
@@ -20,6 +20,7 @@
   stroke-width: 0.2;
 }
 .gantt .tick.thick {
+  stroke: #999 !important;
   stroke-width: 0.4;
 }
 .gantt .today-highlight {
@@ -40,6 +41,15 @@
 }
 .gantt .bar-progress {
   fill: #a3a3ff;
+}
+.gantt .bar-progress.success {
+  fill: #52c41a;
+}
+.gantt .bar-progress.warning {
+  fill: #faad14;
+}
+.gantt .bar-progress.danger {
+  fill: #ff4d4f;
 }
 .gantt .bar-invalid {
   fill: transparent;
@@ -88,9 +98,14 @@
 .gantt .bar-wrapper.active .bar-progress {
   fill: #8a8aff;
 }
-.gantt .lower-text, .gantt .upper-text {
+.gantt .lower-text {
   font-size: 12px;
   text-anchor: middle;
+}
+.gantt .upper-text {
+  font-size: 13px;
+  text-anchor: middle;
+  font-weight: bold;
 }
 .gantt .upper-text {
   fill: #555;
@@ -115,6 +130,7 @@
   padding: 0;
   color: #959da5;
   border-radius: 3px;
+  min-width: 180px;
 }
 .gantt-container .popup-wrapper .title {
   border-bottom: 3px solid #a3a3ff;

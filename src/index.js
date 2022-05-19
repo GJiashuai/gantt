@@ -20,10 +20,12 @@ export default class Gantt {
     constructor(wrapper, tasks, options) {
         this.setup_wrapper(wrapper);
         this.setup_options(options);
-        this.setup_tasks(tasks);
-        // initialize with default view mode
-        this.change_view_mode();
-        this.bind_events();
+        if (tasks.length) {
+            this.setup_tasks(tasks);
+            // initialize with default view mode
+            this.change_view_mode();
+            this.bind_events();
+        }
     }
 
     setup_wrapper(element) {
@@ -226,7 +228,7 @@ export default class Gantt {
         this.gantt_end = date_utils.start_of(this.gantt_end, 'day');
 
         // add date padding on both sides
-        if (this.view_is([VIEW_MODE.QUARTER_DAY, VIEW_MODE.HALF_DAY,VIEW_MODE.DAY])) {
+        if (this.view_is([VIEW_MODE.QUARTER_DAY, VIEW_MODE.HALF_DAY, VIEW_MODE.DAY])) {
             this.gantt_start = date_utils.add(this.gantt_start, -7, 'day');
             this.gantt_end = date_utils.add(this.gantt_end, 7, 'day');
         } else if (this.view_is(VIEW_MODE.MONTH)) {
