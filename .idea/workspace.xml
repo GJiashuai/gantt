@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1a19558-e108-45ce-befe-92d304443c4f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/frappe-gantt.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/frappe-gantt.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gantt.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/gantt.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +40,7 @@
       <option name="presentableId" value="Default" />
       <updated>1652926374960</updated>
       <workItem from="1652926376090" duration="2000" />
-      <workItem from="1652930308281" duration="9698000" />
+      <workItem from="1652930308281" duration="10473000" />
     </task>
     <servers />
   </component>
