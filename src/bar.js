@@ -1,5 +1,7 @@
 import date_utils from './date_utils';
 import { $, createSVG, animateSVG } from './svg_utils';
+import styleToCss from 'style-object-to-css-string';
+
 
 export default class Bar {
     constructor(gantt, task) {
@@ -67,11 +69,13 @@ export default class Bar {
     }
 
     draw() {
-        this.draw_bar();
-        this.draw_progress_bar();
-        this.draw_label();
-        if (this.gantt.options.disableDrag) {
-            this.draw_resize_handles();
+        if (this.task.visible) {
+            this.draw_bar();
+            this.draw_progress_bar();
+            this.draw_label();
+            if (this.gantt.options.disableDrag) {
+                this.draw_resize_handles();
+            }
         }
     }
 
@@ -89,8 +93,10 @@ export default class Bar {
         this.$bar = createSVG(
             'rect',
             Object.assign(
-                this.task.bgColor
-                    ? { style: `fill:${this.task.bgColor};` }
+                this.task.bgColor || this.task.barStyle
+                    ? {
+                        style: `${this.task.barStyle};fill:${this.task.bgColor};`
+                    }
                     : {},
                 barOptions
             )
@@ -107,10 +113,10 @@ export default class Bar {
         if (this.invalid) return;
 
         const progressOptions = {
-            x: this.x,
-            y: this.y,
+            x: this.x + 1,
+            y: this.y + 1,
             width: this.progress_width,
-            height: this.height,
+            height: this.height - 2,
             rx: this.corner_radius,
             ry: this.corner_radius,
             class: `bar-progress ${this.task.type || ''}`,
@@ -119,7 +125,11 @@ export default class Bar {
         this.$bar_progress = createSVG(
             'rect',
             Object.assign(
-                this.task.color ? { style: `fill:${this.task.color};` } : {},
+                this.task.color || this.task.progressStyle
+                    ? {
+                          style: `${this.task.progressStyle};fill:${this.task.color};`,
+                    }
+                    : {},
                 progressOptions
             )
         );
@@ -132,7 +142,8 @@ export default class Bar {
             y: this.y + this.height / 2,
             innerHTML: this.task.name,
             class: 'bar-label',
-            append_to: this.bar_group
+            append_to: this.bar_group,
+            style: this.task.textStyle
         });
         // labels get BBox in the next tick
         requestAnimationFrame(() => this.update_label_position());

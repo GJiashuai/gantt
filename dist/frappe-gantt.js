@@ -1,5 +1,9 @@
-var Gantt = (function () {
+var Gantt = (function (styleToCss) {
     'use strict';
+
+    function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+    var styleToCss__default = /*#__PURE__*/_interopDefaultLegacy(styleToCss);
 
     const YEAR = 'year';
     const MONTH = 'month';
@@ -529,11 +533,13 @@ var Gantt = (function () {
         }
 
         draw() {
-            this.draw_bar();
-            this.draw_progress_bar();
-            this.draw_label();
-            if (this.gantt.options.disableDrag) {
-                this.draw_resize_handles();
+            if (this.task.visible) {
+                this.draw_bar();
+                this.draw_progress_bar();
+                this.draw_label();
+                if (this.gantt.options.disableDrag) {
+                    this.draw_resize_handles();
+                }
             }
         }
 
@@ -551,8 +557,10 @@ var Gantt = (function () {
             this.$bar = createSVG(
                 'rect',
                 Object.assign(
-                    this.task.bgColor
-                        ? { style: `fill:${this.task.bgColor};` }
+                    this.task.bgColor || this.task.barStyle
+                        ? {
+                            style: `${this.task.barStyle};fill:${this.task.bgColor};`
+                        }
                         : {},
                     barOptions
                 )
@@ -569,10 +577,10 @@ var Gantt = (function () {
             if (this.invalid) return;
 
             const progressOptions = {
-                x: this.x,
-                y: this.y,
+                x: this.x + 1,
+                y: this.y + 1,
                 width: this.progress_width,
-                height: this.height,
+                height: this.height - 2,
                 rx: this.corner_radius,
                 ry: this.corner_radius,
                 class: `bar-progress ${this.task.type || ''}`,
@@ -581,7 +589,11 @@ var Gantt = (function () {
             this.$bar_progress = createSVG(
                 'rect',
                 Object.assign(
-                    this.task.color ? { style: `fill:${this.task.color};` } : {},
+                    this.task.color || this.task.progressStyle
+                        ? {
+                              style: `${this.task.progressStyle};fill:${this.task.color};`,
+                        }
+                        : {},
                     progressOptions
                 )
             );
@@ -594,7 +606,8 @@ var Gantt = (function () {
                 y: this.y + this.height / 2,
                 innerHTML: this.task.name,
                 class: 'bar-label',
-                append_to: this.bar_group
+                append_to: this.bar_group,
+                style: this.task.textStyle
             });
             // labels get BBox in the next tick
             requestAnimationFrame(() => this.update_label_position());
@@ -1148,7 +1161,19 @@ var Gantt = (function () {
                 // convert to Date objects
                 task._start = date_utils.parse(task.start);
                 task._end = date_utils.parse(task.end);
-
+                task.visible = 'visible' in task ? !!task.visible : true;
+                task.barStyle =
+                    task.barStyle && typeof task.barStyle === 'object'
+                        ? styleToCss__default["default"](task.barStyle)
+                        : '';
+                task.progressStyle =
+                    task.progressStyle && typeof task.progressStyle === 'object'
+                        ? styleToCss__default["default"](task.progressStyle)
+                        : '';
+                task.textStyle =
+                    task.textStyle && typeof task.textStyle === 'object'
+                        ? styleToCss__default["default"](task.textStyle)
+                        : '';
                 // make task invalid if duration too large
                 if (date_utils.diff(task._end, task._start, 'year') > 10) {
                     task.end = null;
@@ -2004,5 +2029,5 @@ var Gantt = (function () {
 
     return Gantt;
 
-})();
+})(styleToCss);
 //# sourceMappingURL=frappe-gantt.js.map

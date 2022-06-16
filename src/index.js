@@ -5,6 +5,7 @@ import Arrow from './arrow';
 import Popup from './popup';
 
 import './gantt.scss';
+import styleToCss from 'style-object-to-css-string';
 
 const VIEW_MODE = {
     QUARTER_DAY: 'Quarter Day',
@@ -101,7 +102,19 @@ export default class Gantt {
             // convert to Date objects
             task._start = date_utils.parse(task.start);
             task._end = date_utils.parse(task.end);
-
+            task.visible = 'visible' in task ? !!task.visible : true;
+            task.barStyle =
+                task.barStyle && typeof task.barStyle === 'object'
+                    ? styleToCss(task.barStyle)
+                    : '';
+            task.progressStyle =
+                task.progressStyle && typeof task.progressStyle === 'object'
+                    ? styleToCss(task.progressStyle)
+                    : '';
+            task.textStyle =
+                task.textStyle && typeof task.textStyle === 'object'
+                    ? styleToCss(task.textStyle)
+                    : '';
             // make task invalid if duration too large
             if (date_utils.diff(task._end, task._start, 'year') > 10) {
                 task.end = null;
