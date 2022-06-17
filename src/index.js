@@ -411,8 +411,8 @@ export default class Gantt {
             }
             // thick ticks for quarters
             if (
-                this.view_is(VIEW_MODE.MONTH) &&
-                (date.getMonth() + 1) % 3 === 0
+                this.view_is(VIEW_MODE.MONTH)
+                // && (date.getMonth() + 1) % 3 === 0
             ) {
                 tick_class += ' thick';
             }

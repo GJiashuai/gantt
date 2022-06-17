@@ -3,7 +3,7 @@
 }
 .gantt .grid-header {
   fill: #fafafa;
-  stroke: #e0e0e0;
+  stroke: #dedede;
   stroke-width: 0.2;
 }
 .gantt .grid-row {
@@ -16,12 +16,12 @@
   stroke: #ebeff2;
 }
 .gantt .tick {
-  stroke: #e0e0e0;
+  stroke: #dedede;
   stroke-width: 0.2;
 }
 .gantt .tick.thick {
   stroke: #999 !important;
-  stroke-width: 0.4;
+  stroke-width: 0.3;
 }
 .gantt .today-highlight {
   fill: #ff4d4f;

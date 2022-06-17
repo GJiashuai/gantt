@@ -1,6 +1,6 @@
 $bar-color: #b8c2cc !default;
 $bar-stroke: #8D99A6 !default;
-$border-color: #e0e0e0 !default;
+$border-color: #dedede !default;
 $border-color-deep: #999 !default;
 $light-bg: #f5f5f5 !default;
 $light-border-color: #ebeff2 !default;
@@ -40,7 +40,7 @@ $warning-color: #faad14 !default;
 		stroke-width: 0.2;
 		&.thick {
 			stroke: $border-color-deep!important;
-			stroke-width: 0.4;
+			stroke-width: 0.3;
 		}
 	}
 	.today-highlight {
